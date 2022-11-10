@@ -26,13 +26,13 @@ int CSocket::Connect(CInet* inet)
 
 int CSocket::Write(char* buf)
 {
-	ssize_t write_bytes = write(fd, buf, sizeof(buf));
+	ssize_t write_bytes = write(fd, buf, BUFFER_SIZE);
 	errif(write_bytes == -1, "write to server failed\n");
 }
 
 int CSocket::Read(char* buf)
 {
-	ssize_t read_bytes = read(fd, buf, sizeof(buf));
+	ssize_t read_bytes = read(fd, buf, BUFFER_SIZE);
 	if (read_bytes > 0) {
 		printf("message from server: %s\n", buf);
 	}
